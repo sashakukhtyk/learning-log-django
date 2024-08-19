@@ -39,7 +39,7 @@ def new_topic(request):
         # Create an empty form, no data
         form = TopicForm()
     else:
-        # Post method, prosed data
+        # Post method, processed data
         form = TopicForm(data=request.POST)
         if form.is_valid():
             new_topic = form.save(commit=False)
@@ -59,7 +59,7 @@ def new_entry(request, topic_id):
     if request.method != 'POST':
         form = EntryForm()
     else:
-        # Got the data with a post method, prosed data
+        # Got the data with post method, processed data
         form = EntryForm(data=request.POST)
         if form.is_valid():
             new_entry = form.save(commit=False)
@@ -86,7 +86,7 @@ def edit_entry(request, entry_id):
         # Create an empty form
         form = EntryForm(instance=entry)
     else:
-        # Post data submitted, prosed data
+        # Post data submitted, processed data
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
             form.save()
