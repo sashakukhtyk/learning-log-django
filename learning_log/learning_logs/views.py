@@ -76,6 +76,10 @@ def edit_entry(request, entry_id):
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
 
+    # Restriction for not the owner to change the topic
+    if topic.owner != request.user:
+        raise Http404
+
     if request.method != 'POST':
         # Create an empty form
         form = EntryForm(instance=entry)
